@@ -11,7 +11,7 @@ export const FAQ = () => {
   const faqs = [
     {
       question: "Què és exactament aquest sistema de generació d'informes?",
-      answer: "És un sistema automatitzat que converteix respostes de formularis (via Tally) en informes clínics en format Word i PDF. Està pensat per psicòlegs i psiquiatres i segueix lògiques clíniques estructurades amb intel·ligència artificial."
+      answer: "És un sistema automatitzat que converteix respostes de formularis en informes clínics en format Word i PDF. Està pensat per psicòlegs i psiquiatres i segueix lògiques clíniques estructurades amb intel·ligència artificial."
     },
     {
       question: "Quins tipus d'informes pot generar?",
@@ -23,7 +23,7 @@ export const FAQ = () => {
     },
     {
       question: "On s'introdueixen les dades per generar l'informe?",
-      answer: "Les dades es recullen mitjançant un formulari personalitzat a la plataforma Tally, que inclou camps estructurats com motiu de consulta, antecedents personals i familiars, proves aplicades, observacions clíniques, diagnòstic provisional, etc."
+      answer: "Les dades es recullen mitjançant un formulari personalitzat que inclou camps estructurats com motiu de consulta, antecedents personals i familiars, proves aplicades, observacions clíniques, diagnòstic provisional, etc."
     },
     {
       question: "Què passa si hi ha camps buits o informació incompleta?",
@@ -31,7 +31,7 @@ export const FAQ = () => {
     },
     {
       question: "Quin format tenen els informes generats?",
-      answer: "Els informes es generen inicialment en Google Docs (completament editables) i es poden descarregar com a PDF professional. Inclouen estructura clínica estandarditzada, apartats jerarquitzats, capçaleres personalitzades i llenguatge formal i precís."
+      answer: "Els informes es generen inicialment en un format completament editable i es poden descarregar com a PDF professional. Inclouen estructura clínica estandarditzada, apartats jerarquitzats, capçaleres personalitzades i llenguatge formal i precís."
     },
     {
       question: "És possible revisar informes anteriors per fer un de seguiment?",
@@ -43,11 +43,11 @@ export const FAQ = () => {
     },
     {
       question: "Quant costa el sistema i quin és el model de preus?",
-      answer: "Oferim diferents plans segons les necessitats: des de 29€/mes per a consultes individuals fins a plans corporatius per a clíniques. Inclou període de prova gratuït de 30 dies i suport tècnic complet."
+      answer: "La nostra eina s'ofereix com un servei de lloguer (SaaS) amb diferents plans perquè puguis triar el que més s'adapta a les teves necessitats. Per això és molt recomanable fer una demo personalitzada on veuràs els resultats dels informes en el teu cas particular i podràs escollir quin és el pla que millor se t'adapta. Aquesta és la millor manera d'avaluar el valor real per a la teva pràctica."
     },
     {
       question: "Quin nivell de suport tècnic oferiu?",
-      answer: "Proporcionem suport tècnic complet amb formació inicial, documentació detallada, vídeos tutorials, suport per email i chat en viu, i sessions de formació personalitzades per a equips de treball."
+      answer: "Proporcionem suport tècnic complet amb formació inicial, documentació detallada, vídeos tutorials, suport per email i sessions de formació personalitzades per a equips de treball."
     }
   ];
 
@@ -89,7 +89,7 @@ export const FAQ = () => {
               El nostre equip d'experts està aquí per ajudar-te amb qualsevol dubte específic sobre el sistema.
             </p>
             <a 
-              href="mailto:info@inforia.cat"
+              href="mailto:inforia@inforia.cat"
               className="inline-flex items-center gap-2 bg-inforia-primary text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-all duration-300 font-semibold"
             >
               ✉️ Contacta amb nosaltres
