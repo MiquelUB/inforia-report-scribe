@@ -63,9 +63,9 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <a href="/politica-privacitat" className="text-inforia-light/90 hover:text-inforia-accent transition-colors">
+                  <Link to="/politica-privacitat" className="text-inforia-light/90 hover:text-inforia-accent transition-colors">
                     Política de privacitat
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a href="/politica-cookies" className="text-inforia-light/90 hover:text-inforia-accent transition-colors">
