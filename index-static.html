@@ -1,0 +1,1128 @@
+
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redactor d'Informes Clínics Intel·ligent - El Diari Clínic que Escriu els Informes per Tu</title>
+    <meta name="description" content="Estalvia fins a 2 hores en la redacció d'informes clínics. Sistema automatitzat amb IA per a psicòlegs i psiquiatres. Compleix RGPD, genera 6 tipus d'informe." />
+    <meta name="keywords" content="redactor informes clínics IA, psicologia, psiquiatria, intel·ligència artificial, salut digital, automatització clínica, RGPD, DSM-5, CIE-10" />
+    <meta name="author" content="iNFORiA" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://inforia.cat" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="El Diari Clínic que Escriu els Informes per Tu - iNFORiA" />
+    <meta property="og:description" content="Estalvia fins a 2 hores en la redacció d'informes clínics amb IA. Sistema automatitzat per a professionals de la salut mental." />
+    <meta property="og:image" content="https://inforia.cat/og-image.jpg" />
+    <meta property="og:url" content="https://inforia.cat" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="iNFORiA" />
+    <meta property="og:locale" content="ca_ES" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="El Diari Clínic que Escriu els Informes per Tu" />
+    <meta name="twitter:description" content="Estalvia fins a 2 hores en la redacció d'informes clínics amb IA" />
+    <meta name="twitter:image" content="https://inforia.cat/og-image.jpg" />
+    <meta name="twitter:site" content="@inforia" />
+
+    <!-- Theme color -->
+    <meta name="theme-color" content="#8d185a" />
+    
+    <!-- Preconnect for fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzhkMTg1YSIvPgo8cGF0aCBkPSJNMTYgOEMxMiA4IDkgMTEgOSAxNkM5IDIxIDEyIDI0IDE2IDI0QzIwIDI0IDIzIDIxIDIzIDE2QzIzIDExIDIwIDggMTYgOFpNMTYgMjBDMTQgMjAgMTMgMTggMTMgMTZDMTMgMTQgMTQgMTIgMTYgMTJDMTggMTIgMTkgMTQgMTkgMTZDMTkgMTggMTggMjAgMTYgMjBaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K">
+    
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "iNFORiA",
+      "description": "Sistema automatitzat amb IA per a la redacció d'informes clínics per a psicòlegs i psiquiatres",
+      "url": "https://inforia.cat",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR",
+        "description": "Guia gratuïta i demo personalitzada"
+      }
+    }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Colors corporatius */
+        :root {
+            --inforia-primary: #8d185a;
+            --inforia-secondary: #438589;
+            --inforia-accent: #F9B233;
+            --inforia-dark: #012E57;
+            --inforia-light: #fcf7fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: var(--inforia-primary);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.sticky {
+            background: rgba(141, 24, 90, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav a:hover {
+            color: var(--inforia-accent);
+        }
+
+        .mobile-menu-button {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--inforia-secondary), var(--inforia-dark));
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero .accent {
+            color: var(--inforia-accent);
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--inforia-accent);
+            color: var(--inforia-dark);
+        }
+
+        .btn-primary:hover {
+            background: #f4a623;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--inforia-dark);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--inforia-accent);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--inforia-dark);
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            text-align: center;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid #f0f0f0;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--inforia-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--inforia-dark);
+        }
+
+        .benefit-description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .benefit-stat {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--inforia-primary);
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, rgba(141, 24, 90, 0.1), rgba(128, 0, 128, 0.1));
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .form-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-info h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: var(--inforia-dark);
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: #666;
+        }
+
+        .checkmark {
+            width: 24px;
+            height: 24px;
+            background: #10b981;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--inforia-accent);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--inforia-primary);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .checkbox {
+            width: 18px;
+            height: 18px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: var(--inforia-accent);
+            color: var(--inforia-dark);
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #f4a623;
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .form-disclaimer {
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            z-index: 9999;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            border-left: 4px solid #10b981;
+        }
+
+        .toast.error {
+            border-left: 4px solid #ef4444;
+        }
+
+        .toast-title {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+        }
+
+        .toast-description {
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--inforia-dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--inforia-accent);
+        }
+
+        /* Cookie Popup */
+        .cookie-popup {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+            background: #1f2937;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: none;
+        }
+
+        .cookie-popup.show {
+            display: block;
+        }
+
+        .cookie-popup h3 {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cookie-popup p {
+            font-size: 0.875rem;
+            color: #d1d5db;
+            margin-bottom: 1rem;
+        }
+
+        .cookie-popup a {
+            color: var(--inforia-accent);
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cookie-btn.accept {
+            background: #10b981;
+            color: white;
+        }
+
+        .cookie-btn.accept:hover {
+            background: #059669;
+        }
+
+        .cookie-btn.configure,
+        .cookie-btn.later {
+            background: transparent;
+            color: #d1d5db;
+            border: 1px solid #374151;
+        }
+
+        .cookie-btn.configure:hover,
+        .cookie-btn.later:hover {
+            background: #374151;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .form-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cookie-popup {
+                left: 10px;
+                right: 10px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(141, 24, 90, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(141, 24, 90, 0.8);
+            }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
+        /* Loading state */
+        .loading {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .spinner {
+            width: 16px;
+            height: 16px;
+            border: 2px solid currentColor;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">iNFORiA</div>
+                <nav class="nav">
+                    <a href="#hero">Inici</a>
+                    <a href="#benefits">Beneficis</a>
+                    <a href="#contact-form">Contacte</a>
+                </nav>
+                <button class="mobile-menu-button" id="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="animate-fade-in-up">
+                <h1>
+                    El Diari Clínic que 
+                    <span class="accent">Escriu els Informes per Tu</span>
+                </h1>
+                
+                <p>
+                    Transforma 2 hores de redacció en només 30 minuts. 
+                    <br>Dóna valor a cada anotació: el diari es converteix en informe.
+                </p>
+                
+                <div class="cta-buttons">
+                    <a href="#contact-form" class="btn btn-primary animate-pulse-glow">
+                        🚀 DEMANA UNA DEMO GRATUÏTA
+                    </a>
+                    <a href="#video-demo" class="btn btn-secondary">
+                        ▶️ Veure Demo (60s)
+                    </a>
+                </div>
+
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">2h → 30min</div>
+                        <div>Estalvi de temps</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">6 tipus</div>
+                        <div>d'informes diferents</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100% RGPD</div>
+                        <div>Compliment normatiu</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="benefits">
+        <div class="container">
+            <h2 class="section-title">Beneficis que transformen la teva pràctica</h2>
+            <p class="section-subtitle">
+                Descobreix com el nostre sistema pot revolucionar la manera com generes informes clínics
+            </p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">⏱️</div>
+                    <h3 class="benefit-title">Estalvia Fins a 2 Hores</h3>
+                    <p class="benefit-description">Transforma respostes de formularis en informes clínics complets en minuts</p>
+                    <div class="benefit-stat" style="color: #10b981;">2h → 30min</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📋</div>
+                    <h3 class="benefit-title">Múltiples Tipus d'Informe</h3>
+                    <p class="benefit-description">Genera informes clínics, de seguiment, jurídics, TDAH, TEA i beques MEC</p>
+                    <div class="benefit-stat" style="color: #3b82f6;">6 tipus d'informe</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title">Consistència Documental</h3>
+                    <p class="benefit-description">Utilitza codis DSM-5 i CIE-10, estructura professional i plantilles personalitzables</p>
+                    <div class="benefit-stat" style="color: #8b5cf6;">Estàndard clínic</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔍</div>
+                    <h3 class="benefit-title">Control de Qualitat</h3>
+                    <p class="benefit-description">Marca automàticament mancances de dades per facilitar la revisió professional</p>
+                    <div class="benefit-stat" style="color: #f59e0b;">Revisió facilitada</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">📚</div>
+                    <h3 class="benefit-title">Traçabilitat Completa</h3>
+                    <p class="benefit-description">Cada pas queda registrat per garantir auditoria i control de versions</p>
+                    <div class="benefit-stat" style="color: #6366f1;">100% auditable</div>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">ROI Immediat</h3>
+                    <p class="benefit-description">Recupera la inversió en menys de 2 mesos amb l'optimització del temps clínic</p>
+                    <div class="benefit-stat" style="color: #10b981;">200% ROI</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <h2 class="section-title">🎁 Descarrega la Guia Gratuïta</h2>
+            <p class="section-subtitle">
+                "10 errors més comuns en la redacció d'informes clínics i com evitar-los"
+            </p>
+            
+            <div class="form-container">
+                <!-- Informació de la guia -->
+                <div class="form-info">
+                    <h3>Què inclou aquesta guia?</h3>
+                    <ul class="info-list">
+                        <li>
+                            <span class="checkmark">✓</span>
+                            <span>Identifica errors comuns en la redacció</span>
+                        </li>
+                        <li>
+                            <span class="checkmark">✓</span>
+                            <span>Aprèn tècniques de millora immediata</span>
+                        </li>
+                        <li>
+                            <span class="checkmark">✓</span>
+                            <span>Guanya consistència professional</span>
+                        </li>
+                        <li>
+                            <span class="checkmark">✓</span>
+                            <span>Optimitza el temps de revisió</span>
+                        </li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <div style="font-size: 4rem; margin-bottom: 0.5rem;">📚</div>
+                        <p style="font-size: 1.125rem; font-weight: 600; color: var(--inforia-dark);">Format PDF professional</p>
+                        <p style="font-size: 0.875rem; color: #666;">Guia completa i pràctica</p>
+                    </div>
+                </div>
+
+                <!-- Formulari -->
+                <div class="contact-form">
+                    <div style="text-align: center; margin-bottom: 1.5rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: bold; color: var(--inforia-dark); margin-bottom: 0.5rem;">
+                            🔥 Accés Immediat
+                        </h3>
+                        <p style="color: #666;">Emplena el formulari i rebràs la guia al teu email</p>
+                    </div>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nom complet</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="El teu nom complet" required>
+                            <div class="error-message" id="name-error" style="display: none;">
+                                ⚠️ <span>El nom és obligatori</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email professional</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="el_teu_email@consulta.com" required>
+                            <div class="error-message" id="email-error" style="display: none;">
+                                ⚠️ <span>Format d'email invàlid</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="web" class="form-label">Pàgina web</label>
+                            <input type="url" id="web" name="web" class="form-input" placeholder="https://www.example.com" required>
+                            <div class="error-message" id="web-error" style="display: none;">
+                                ⚠️ <span>Format de URL invàlid</span>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="consulta" class="form-label">Consulta o pregunta (opcional)</label>
+                            <textarea id="consulta" name="consulta" class="form-input form-textarea" placeholder="Escriu la teva pregunta o consulta..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Què t'interessa? (selecciona una o ambdues opcions)</label>
+                            <div style="margin-top: 0.75rem;">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="interest1" name="interests" value="1" class="checkbox" checked>
+                                    <label for="interest1" style="font-weight: 500;">Descarregar la guia gratuïta</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="interest2" name="interests" value="2" class="checkbox">
+                                    <label for="interest2" style="font-weight: 500;">Sol·licitar demo personalitzada</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn" id="submit-btn">
+                            📥 DESCARREGAR GUIA GRATUÏTA ARA!
+                        </button>
+                        
+                        <p class="form-disclaimer">
+                            Al descarregar la guia acceptes rebre comunicacions sobre els nostres serveis
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#" onclick="showLegalInfo('avis-legal')">Avís Legal</a>
+                <a href="#" onclick="showLegalInfo('politica-privacitat')">Política de Privacitat</a>
+                <a href="#" onclick="showLegalInfo('politica-cookies')">Política de Cookies</a>
+                <a href="#" onclick="configureCookies()">Configuració de Cookies</a>
+            </div>
+            <p>&copy; 2024 iNFORiA. Tots els drets reservats.</p>
+        </div>
+    </footer>
+
+    <!-- Cookie Popup -->
+    <div class="cookie-popup" id="cookie-popup">
+        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+            <div style="font-size: 2rem;">🍪</div>
+            <div style="flex: 1;">
+                <h3>Utilitzem cookies</h3>
+                <p>
+                    Aquest lloc web utilitza cookies per millorar la teva experiència de navegació i oferir contingut personalitzat. 
+                    <a href="#" onclick="showLegalInfo('politica-cookies')">Més informació</a>
+                </p>
+                <div class="cookie-buttons">
+                    <button class="cookie-btn accept" onclick="acceptCookies()">Acceptar</button>
+                    <button class="cookie-btn configure" onclick="configureCookies()">Configurar</button>
+                    <button class="cookie-btn later" onclick="hideCookiePopup()">Més tard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div id="toast" class="toast">
+        <div class="toast-title" id="toast-title"></div>
+        <div class="toast-description" id="toast-description"></div>
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('sticky');
+            } else {
+                header.classList.remove('sticky');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = 80;
+                    const elementPosition = target.offsetTop - headerHeight;
+                    window.scrollTo({
+                        top: elementPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Toast functionality
+        function showToast(title, description, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastTitle = document.getElementById('toast-title');
+            const toastDescription = document.getElementById('toast-description');
+            
+            toastTitle.textContent = title;
+            toastDescription.textContent = description;
+            
+            toast.className = `toast ${type}`;
+            setTimeout(() => toast.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 5000);
+        }
+
+        // Form validation and submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submit-btn');
+            const form = e.target;
+            
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+            
+            // Validate form
+            let isValid = true;
+            
+            const name = form.name.value.trim();
+            if (!name || name.length < 2) {
+                document.getElementById('name-error').style.display = 'flex';
+                isValid = false;
+            }
+            
+            const email = form.email.value.trim();
+            const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+            if (!email || !emailRegex.test(email)) {
+                document.getElementById('email-error').style.display = 'flex';
+                isValid = false;
+            }
+            
+            const web = form.web.value.trim();
+            const urlRegex = /^https?:\/\/.+\..+/;
+            if (!web || !urlRegex.test(web)) {
+                document.getElementById('web-error').style.display = 'flex';
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="loading"><div class="spinner"></div> Enviant...</div>';
+            
+            // Prepare form data
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('web', web);
+            
+            const consulta = form.consulta.value.trim();
+            if (consulta) {
+                formData.append('consulta', consulta);
+            }
+            
+            // Get selected interests
+            const interests = Array.from(form.querySelectorAll('input[name="interests"]:checked'))
+                .map(checkbox => checkbox.value);
+            interests.forEach(interest => {
+                formData.append('interests[]', interest);
+            });
+            
+            try {
+                const response = await fetch('https://hook.eu2.make.com/pw4jt2osscblg2xdlnwa72rt2lf4on44', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                if (response.ok) {
+                    showToast(
+                        '🎉 Gràcies!', 
+                        'La teva guia gratuïta està en camí al teu email. Revisa la safata d\'entrada en els pròxims minuts!',
+                        'success'
+                    );
+                    form.reset();
+                    // Reset checkboxes to default state
+                    document.getElementById('interest1').checked = true;
+                    document.getElementById('interest2').checked = false;
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error('Error en l\'enviament');
+                }
+            } catch (error) {
+                showToast(
+                    'Error', 
+                    'Hi ha hagut un error. Si us plau, comprova la connexió i torna-ho a intentar.',
+                    'error'
+                );
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '📥 DESCARREGAR GUIA GRATUÏTA ARA!';
+            }
+        });
+
+        // Cookie functionality
+        function showCookiePopup() {
+            const cookiesAccepted = localStorage.getItem('cookiesAccepted');
+            if (!cookiesAccepted) {
+                setTimeout(() => {
+                    document.getElementById('cookie-popup').classList.add('show');
+                }, 1000);
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookiesAccepted', 'true');
+            hideCookiePopup();
+        }
+
+        function hideCookiePopup() {
+            document.getElementById('cookie-popup').classList.remove('show');
+        }
+
+        function configureCookies() {
+            alert('Configuració de cookies:\n\n• Cookies necessàries: Sempre actives\n• Cookies d\'anàlisi: Opcionals\n• Cookies de màrqueting: Opcionals\n\nContacta amb nosaltres per més opcions de configuració.');
+        }
+
+        function showLegalInfo(type) {
+            let title, content;
+            
+            switch(type) {
+                case 'avis-legal':
+                    title = 'Avís Legal';
+                    content = 'Informació legal sobre l\'ús del lloc web iNFORiA. Responsabilitat, propietat intel·lectual i condicions d\'ús.';
+                    break;
+                case 'politica-privacitat':
+                    title = 'Política de Privacitat';
+                    content = 'Informació sobre com recollim, utilitzem i protegim les teves dades personals d\'acord amb el RGPD.';
+                    break;
+                case 'politica-cookies':
+                    title = 'Política de Cookies';
+                    content = 'Informació sobre l\'ús de cookies en aquest lloc web per millorar l\'experiència d\'usuari.';
+                    break;
+            }
+            
+            alert(title + '\n\n' + content + '\n\nPer obtenir informació detallada, contacta amb nosaltres.');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            showCookiePopup();
+        });
+    </script>
+</body>
+</html>
