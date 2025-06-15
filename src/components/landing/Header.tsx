@@ -1,9 +1,11 @@
 
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { Menu, X } from 'lucide-react';
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,7 +26,16 @@ export const Header = () => {
         behavior: 'smooth'
       });
     }
+    setIsMobileMenuOpen(false); // Tancar menú mòbil després de navegar
   };
+
+  const navigationItems = [
+    { label: 'Beneficis', id: 'benefits' },
+    { label: 'Com funciona', id: 'how-it-works' },
+    { label: 'Guia gratuïta', id: 'lead-magnet' },
+    { label: 'Vídeo demo', id: 'video-demo' },
+    { label: 'FAQ', id: 'faq' }
+  ];
 
   return (
     <header 
@@ -40,46 +51,63 @@ export const Header = () => {
             iNFORiA
           </div>
           
+          {/* Navegació desktop */}
           <nav className="hidden md:flex space-x-6">
-            <button 
-              onClick={() => scrollToSection('benefits')}
-              className="text-inforia-light hover:text-yellow-300 transition-colors"
-            >
-              Beneficis
-            </button>
-            <button 
-              onClick={() => scrollToSection('how-it-works')}
-              className="text-inforia-light hover:text-yellow-300 transition-colors"
-            >
-              Com funciona
-            </button>
-            <button 
-              onClick={() => scrollToSection('lead-magnet')}
-              className="text-inforia-light hover:text-yellow-300 transition-colors"
-            >
-              Guia gratuïta
-            </button>
-            <button 
-              onClick={() => scrollToSection('video-demo')}
-              className="text-inforia-light hover:text-yellow-300 transition-colors"
-            >
-              Vídeo demo
-            </button>
-            <button 
-              onClick={() => scrollToSection('faq')}
-              className="text-inforia-light hover:text-yellow-300 transition-colors"
-            >
-              FAQ
-            </button>
+            {navigationItems.map((item) => (
+              <button 
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                className="text-inforia-light hover:text-yellow-300 transition-colors"
+              >
+                {item.label}
+              </button>
+            ))}
           </nav>
 
-          <Button 
-            onClick={() => scrollToSection('contact-form')}
-            className="bg-inforia-accent text-inforia-dark font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition-all duration-300 animate-pulse-glow text-sm md:text-base"
+          {/* Botó CTA desktop */}
+          <div className="hidden md:block">
+            <Button 
+              onClick={() => scrollToSection('contact-form')}
+              className="bg-inforia-accent text-inforia-dark font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition-all duration-300 animate-pulse-glow text-sm md:text-base"
+            >
+              🚀 DEMANA UNA DEMO GRATUÏTA
+            </Button>
+          </div>
+
+          {/* Botó menú mòbil */}
+          <button 
+            className="md:hidden text-inforia-light hover:text-yellow-300 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Obrir menú"
           >
-            🚀 DEMANA UNA DEMO GRATUÏTA
-          </Button>
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
+
+        {/* Menú mòbil */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden bg-inforia-primary border-t border-inforia-secondary/20">
+            <nav className="py-4 space-y-2">
+              {navigationItems.map((item) => (
+                <button 
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block w-full text-left px-4 py-2 text-inforia-light hover:text-yellow-300 hover:bg-inforia-secondary/20 transition-colors"
+                >
+                  {item.label}
+                </button>
+              ))}
+              <div className="px-4 pt-4">
+                <Button 
+                  onClick={() => scrollToSection('contact-form')}
+                  className="w-full bg-inforia-accent text-inforia-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-all duration-300 text-sm"
+                >
+                  🚀 DEMANA UNA DEMO GRATUÏTA
+                </Button>
+              </div>
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
