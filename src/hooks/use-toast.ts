@@ -1,4 +1,3 @@
-
 import * as React from "react"
 
 type ToasterToast = {
@@ -8,6 +7,8 @@ type ToasterToast = {
   action?: React.ReactElement
   variant?: "default" | "destructive"
   duration?: number
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
 }
 
 const TOAST_LIMIT = 1
@@ -17,7 +18,7 @@ type ToastActionElement = React.ReactElement
 
 const actionTypes = {
   ADD_TOAST: "ADD_TOAST",
-  UPDATE_TOAST: "UPDATE_TOAST",
+  UPDATE_TOAST: "UPDATE_TOAST", 
   DISMISS_TOAST: "DISMISS_TOAST",
   REMOVE_TOAST: "REMOVE_TOAST",
 } as const
