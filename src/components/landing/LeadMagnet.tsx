@@ -50,45 +50,15 @@ export const LeadMagnet = () => {
         <h2 className="text-3xl md:text-5xl font-bold text-center mb-6">
           🎁 GUIA GRATUÏTA: Millora els teus Informes Clínics
         </h2>
-        <p className="text-xl text-center mb-16 opacity-95 max-w-3xl mx-auto">
+        <p className="text-xl text-center mb-8 opacity-95 max-w-3xl mx-auto">
           Descobreix els secrets per redactar informes clínics d'alta qualitat i evitar els errors més comuns
         </p>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Info section */}
-          <div className="space-y-6">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6">
-              "10 errors més comuns en la redacció d'informes clínics i com evitar-los"
-            </h3>
-            
-            <p className="text-lg opacity-95 leading-relaxed">
-              Una guia pràctica i completa que t'ajudarà a millorar la qualitat dels teus informes clínics i evitar els errors més freqüents en la pràctica professional.
-            </p>
-            
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
-                <span className="font-semibold">Identifica errors comuns en la redacció</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
-                <span className="font-semibold">Aprèn tècniques de millora immediata</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
-                <span className="font-semibold">Guanya consistència professional</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
-                <span className="font-semibold">Optimitza el temps de revisió</span>
-              </div>
-            </div>
-          </div>
-          
-          {/* Form section */}
+        {/* Form section moved up */}
+        <div className="max-w-lg mx-auto mb-16">
           <div className="bg-white rounded-xl p-8 shadow-2xl">
             <form id="contact-form" onSubmit={handleSubmit} className="space-y-6">
-              <h3 className="text-2xl font-bold text-inforia-dark mb-6">
+              <h3 className="text-2xl font-bold text-inforia-dark mb-6 text-center">
                 🔥 DESCARREGA LA TEVA GUIA GRATUÏTA
               </h3>
               
@@ -165,6 +135,48 @@ export const LeadMagnet = () => {
                 {isSubmitting ? '📤 Enviant...' : '📥 DESCARREGAR GUIA GRATUÏTA ARA!'}
               </Button>
             </form>
+          </div>
+        </div>
+
+        {/* Info section moved down */}
+        <div className="max-w-4xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div className="space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6">
+                "10 errors més comuns en la redacció d'informes clínics i com evitar-los"
+              </h3>
+              
+              <p className="text-lg opacity-95 leading-relaxed">
+                Una guia pràctica i completa que t'ajudarà a millorar la qualitat dels teus informes clínics i evitar els errors més freqüents en la pràctica professional.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                  <span className="font-semibold">Identifica errors comuns en la redacció</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                  <span className="font-semibold">Aprèn tècniques de millora immediata</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                  <span className="font-semibold">Guanya consistència professional</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">✓</div>
+                  <span className="font-semibold">Optimitza el temps de revisió</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="flex items-center justify-center lg:justify-end">
+              <div className="text-center lg:text-right space-y-4">
+                <div className="text-6xl">📚</div>
+                <p className="text-lg font-semibold">Guia completa</p>
+                <p className="text-sm opacity-90">Format PDF professional</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
