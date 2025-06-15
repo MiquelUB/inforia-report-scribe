@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2 } from 'lucide-react';
+import { Loader2, AlertCircle, CheckCircle2 } from 'lucide-react';
 
 interface FormData {
   name: string;
@@ -29,7 +29,7 @@ export const ContactForm = () => {
     watch
   } = useForm<FormData>({
     defaultValues: {
-      interests: ['1'] // Descarregar guia per defecte
+      interests: ['1']
     }
   });
 
@@ -44,7 +44,6 @@ export const ContactForm = () => {
     formData.append('web', data.web);
     if (data.consulta) formData.append('consulta', data.consulta);
     
-    // Afegir interessos com a camps separats
     data.interests.forEach(interest => {
       formData.append('interests[]', interest);
     });
@@ -62,7 +61,6 @@ export const ContactForm = () => {
           duration: 5000,
         });
         reset();
-        // Scroll suau cap amunt després de l'enviament
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         throw new Error('Error en l\'enviament');
@@ -109,19 +107,19 @@ export const ContactForm = () => {
                 </h3>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                    <CheckCircle2 className="w-6 h-6 text-green-500" />
                     <span className="text-gray-700">Identifica errors comuns en la redacció</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                    <CheckCircle2 className="w-6 h-6 text-green-500" />
                     <span className="text-gray-700">Aprèn tècniques de millora immediata</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                    <CheckCircle2 className="w-6 h-6 text-green-500" />
                     <span className="text-gray-700">Guanya consistència professional</span>
                   </li>
                   <li className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-sm">✓</div>
+                    <CheckCircle2 className="w-6 h-6 text-green-500" />
                     <span className="text-gray-700">Optimitza el temps de revisió</span>
                   </li>
                 </ul>
@@ -153,11 +151,14 @@ export const ContactForm = () => {
                       required: 'El nom és obligatori',
                       minLength: { value: 2, message: 'El nom ha de tenir almenys 2 caràcters' }
                     })}
-                    className={`mt-2 ${errors.name ? 'border-red-500' : ''}`}
+                    className={`mt-2 ${errors.name ? 'border-red-500 focus:border-red-500' : ''}`}
                     placeholder="El teu nom complet"
                   />
                   {errors.name && (
-                    <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                    <div className="flex items-center gap-2 text-red-500 text-sm mt-1">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>{errors.name.message}</span>
+                    </div>
                   )}
                 </div>
                 
@@ -173,11 +174,14 @@ export const ContactForm = () => {
                         message: 'Format d\'email invàlid'
                       }
                     })}
-                    className={`mt-2 ${errors.email ? 'border-red-500' : ''}`}
+                    className={`mt-2 ${errors.email ? 'border-red-500 focus:border-red-500' : ''}`}
                     placeholder="el_teu_email@consulta.com"
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                    <div className="flex items-center gap-2 text-red-500 text-sm mt-1">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>{errors.email.message}</span>
+                    </div>
                   )}
                 </div>
                 
@@ -193,11 +197,14 @@ export const ContactForm = () => {
                         message: 'Format de URL invàlid (ha de començar amb http:// o https://)'
                       }
                     })}
-                    className={`mt-2 ${errors.web ? 'border-red-500' : ''}`}
+                    className={`mt-2 ${errors.web ? 'border-red-500 focus:border-red-500' : ''}`}
                     placeholder="https://www.example.com"
                   />
                   {errors.web && (
-                    <p className="text-red-500 text-sm mt-1">{errors.web.message}</p>
+                    <div className="flex items-center gap-2 text-red-500 text-sm mt-1">
+                      <AlertCircle className="w-4 h-4" />
+                      <span>{errors.web.message}</span>
+                    </div>
                   )}
                 </div>
                 
