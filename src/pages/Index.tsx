@@ -2,6 +2,7 @@
 import React from 'react';
 import { Header } from '@/components/landing/Header';
 import { Hero } from '@/components/landing/Hero';
+import { ContactForm } from '@/components/landing/ContactForm';
 import { SocialProof } from '@/components/landing/SocialProof';
 import { Benefits } from '@/components/landing/Benefits';
 import { HowItWorks } from '@/components/landing/HowItWorks';
@@ -18,6 +19,7 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <ContactForm />
         <SocialProof />
         <Benefits />
         <HowItWorks />
