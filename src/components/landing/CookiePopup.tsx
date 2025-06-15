@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 export const CookiePopup = () => {
@@ -32,20 +33,28 @@ export const CookiePopup = () => {
             <h3 className="font-semibold mb-2">Utilitzem cookies</h3>
             <p className="text-sm text-gray-300 leading-relaxed mb-4">
               Aquest lloc web utilitza cookies per millorar la teva experiència de navegació i oferir contingut personalitzat. 
-              <a 
-                href="/politica-cookies" 
+              <Link 
+                to="/politica-cookies" 
                 className="text-inforia-accent hover:underline ml-1"
               >
                 Més informació
-              </a>
+              </Link>
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
               <Button
                 onClick={acceptCookies}
                 className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-semibold"
               >
                 Acceptar
               </Button>
+              <Link to="/configuracio-cookies">
+                <Button
+                  variant="outline"
+                  className="border-gray-600 text-gray-300 hover:bg-gray-800 px-4 py-2 rounded-lg"
+                >
+                  Configurar
+                </Button>
+              </Link>
               <Button
                 variant="outline"
                 onClick={() => setShowPopup(false)}

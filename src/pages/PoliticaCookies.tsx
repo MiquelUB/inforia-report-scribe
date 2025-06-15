@@ -1,8 +1,9 @@
-
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const PoliticaCookies = () => {
+  const navigate = useNavigate();
+
   const acceptAllCookies = () => {
     localStorage.setItem('cookieConsent', 'all');
     alert('Has acceptat totes les cookies. Gràcies!');
@@ -14,7 +15,7 @@ const PoliticaCookies = () => {
   };
 
   const openCookieSettings = () => {
-    alert('Panell de configuració de cookies (a implementar segons les necessitats específiques).');
+    navigate('/configuracio-cookies');
   };
 
   return (
@@ -152,7 +153,10 @@ const PoliticaCookies = () => {
 
           <h3 className="text-inforia-secondary text-xl font-semibold mt-8 mb-4">Al nostre lloc web:</h3>
           <p className="mb-5">
-            Pots modificar les teves preferències utilitzant el panell de control de cookies disponible al peu de pàgina 
+            Pots modificar les teves preferències utilitzant el{' '}
+            <Link to="/configuracio-cookies" className="text-inforia-primary hover:underline font-semibold">
+              panell de configuració de cookies
+            </Link>{' '}
             o fent clic al botó "Configurar" de dalt.
           </p>
 
