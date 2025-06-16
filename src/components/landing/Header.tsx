@@ -26,7 +26,7 @@ export const Header = () => {
         behavior: 'smooth'
       });
     }
-    setIsMobileMenuOpen(false); // Tancar menú mòbil després de navegar
+    setIsMobileMenuOpen(false);
   };
 
   const navigationItems = [
@@ -41,7 +41,7 @@ export const Header = () => {
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'sticky-header shadow-lg' 
+          ? 'bg-inforia-primary/95 backdrop-blur-sm shadow-lg' 
           : 'bg-inforia-primary'
       }`}
     >

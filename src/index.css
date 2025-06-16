@@ -66,6 +66,14 @@
   .border-inforia-secondary { border-color: var(--inforia-secondary); }
   .border-inforia-accent { border-color: var(--inforia-accent); }
   
+  /* Header sticky styles */
+  .sticky-header {
+    background: rgba(141, 24, 90, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
   /* Animation utilities */
   .hover-lift {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
