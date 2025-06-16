@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
 import { LandingPage } from '@/pages/LandingPage';
-import { AvisLegal } from '@/pages/AvisLegal';
-import { PoliticaPrivacitat } from '@/pages/PoliticaPrivacitat';
-import { PoliticaCookies } from '@/pages/PoliticaCookies';
-import { ConfiguracioCookies } from '@/pages/ConfiguracioCookies';
-import { NotFound } from '@/pages/NotFound';
+import AvisLegal from '@/pages/AvisLegal';
+import PoliticaPrivacitat from '@/pages/PoliticaPrivacitat';
+import PoliticaCookies from '@/pages/PoliticaCookies';
+import ConfiguracioCookies from '@/pages/ConfiguracioCookies';
+import NotFound from '@/pages/NotFound';
 import './App.css';
 
 const queryClient = new QueryClient();
