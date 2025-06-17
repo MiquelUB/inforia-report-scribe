@@ -29,6 +29,19 @@ export const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
+  const scrollToForm = () => {
+    const element = document.getElementById('contact-form');
+    if (element) {
+      const headerHeight = 80;
+      const elementPosition = element.offsetTop - headerHeight;
+      window.scrollTo({
+        top: elementPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsMobileMenuOpen(false);
+  };
+
   const navigationItems = [
     { label: 'Beneficis', id: 'benefits' },
     { label: 'Com funciona', id: 'how-it-works' },
@@ -46,7 +59,7 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           <div className="text-xl font-bold text-inforia-light">
             iNFORiA
           </div>
@@ -63,6 +76,16 @@ export const Header = () => {
               </button>
             ))}
           </nav>
+
+          {/* CTA Button */}
+          <div className="hidden md:block">
+            <Button 
+              onClick={scrollToForm}
+              className="bg-inforia-accent text-inforia-dark font-bold px-6 py-2 rounded-lg hover:bg-yellow-400 transition-all duration-300"
+            >
+              DEMO GRATUÏTA
+            </Button>
+          </div>
 
           {/* Botó menú mòbil */}
           <button 
@@ -87,6 +110,12 @@ export const Header = () => {
                   {item.label}
                 </button>
               ))}
+              <button 
+                onClick={scrollToForm}
+                className="block w-full text-left px-4 py-2 text-inforia-accent font-bold hover:text-yellow-300 hover:bg-inforia-secondary/20 transition-colors"
+              >
+                DEMO GRATUÏTA
+              </button>
             </nav>
           </div>
         )}
