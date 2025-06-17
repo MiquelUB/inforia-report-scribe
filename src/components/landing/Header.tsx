@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 export const Header = () => {
@@ -47,11 +46,12 @@ export const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
+          {/* Logo */}
           <div className="text-xl font-bold text-inforia-light">
             iNFORiA
           </div>
           
-          {/* Navegació desktop */}
+          {/* Navegació desktop - centrada */}
           <nav className="hidden md:flex space-x-6">
             {navigationItems.map((item) => (
               <button 
