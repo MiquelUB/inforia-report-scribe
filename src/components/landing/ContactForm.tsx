@@ -29,24 +29,34 @@ export const ContactForm = () => {
     watch
   } = useForm<FormData>({
     defaultValues: {
-      interests: ['1']
+      interests: ['guia']
     }
   });
 
-  const watchedInterests = watch('interests', ['1']);
+  const watchedInterests = watch('interests', ['guia']);
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
+
+    // Determinar el tipus d'interès basat en les seleccions
+    let interestType = '';
+    const hasGuia = data.interests.includes('guia');
+    const hasDemo = data.interests.includes('demo');
+    
+    if (hasGuia && hasDemo) {
+      interestType = 'guia i demo';
+    } else if (hasDemo) {
+      interestType = 'demo';
+    } else {
+      interestType = 'guia';
+    }
 
     const formData = new FormData();
     formData.append('name', data.name);
     formData.append('email', data.email);
     formData.append('web', data.web);
     if (data.consulta) formData.append('consulta', data.consulta);
-    
-    data.interests.forEach(interest => {
-      formData.append('interests[]', interest);
-    });
+    formData.append('interests', interestType);
 
     try {
       const response = await fetch('https://hook.eu2.make.com/pw4jt2osscblg2xdlnwa72rt2lf4on44', {
@@ -225,8 +235,8 @@ export const ContactForm = () => {
                     <div className="flex items-center space-x-2">
                       <Checkbox 
                         id="lead-magnet-form" 
-                        checked={watchedInterests?.includes('1')}
-                        onCheckedChange={(checked) => handleInterestChange('1', checked as boolean)}
+                        checked={watchedInterests?.includes('guia')}
+                        onCheckedChange={(checked) => handleInterestChange('guia', checked as boolean)}
                       />
                       <label htmlFor="lead-magnet-form" className="text-gray-700 font-medium">
                         Descarregar la guia gratuïta
@@ -235,8 +245,8 @@ export const ContactForm = () => {
                     <div className="flex items-center space-x-2">
                       <Checkbox 
                         id="demo-form" 
-                        checked={watchedInterests?.includes('2')}
-                        onCheckedChange={(checked) => handleInterestChange('2', checked as boolean)}
+                        checked={watchedInterests?.includes('demo')}
+                        onCheckedChange={(checked) => handleInterestChange('demo', checked as boolean)}
                       />
                       <label htmlFor="demo-form" className="text-gray-700 font-medium">
                         Sol·licitar demo personalitzada

@@ -16,7 +16,7 @@ export const Hero = () => {
   };
 
   return (
-    <section id="hero" className="pt-20 bg-gradient-to-br from-inforia-secondary to-inforia-dark text-white">
+    <section id="hero" className="pt-16 bg-gradient-to-br from-inforia-secondary to-inforia-dark text-white">
       <div className="container mx-auto px-4 py-20 text-center">
         <div className="animate-fade-in-up">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -29,20 +29,12 @@ export const Hero = () => {
             <span className="block mt-2">Dóna valor a cada anotació: el diari es converteix en informe.</span>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+          <div className="flex justify-center mb-12">
             <Button 
               onClick={scrollToForm}
               className="bg-inforia-accent text-inforia-dark font-bold px-8 py-4 rounded-lg hover:bg-yellow-400 transition-all duration-300 transform hover:scale-105 text-lg animate-pulse-glow"
             >
               🚀 DEMANA UNA DEMO GRATUÏTA
-            </Button>
-            
-            <Button 
-              variant="outline"
-              onClick={() => document.getElementById('video-demo')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-white hover:text-inforia-dark transition-all duration-300 text-lg"
-            >
-              ▶️ Veure Demo (60s)
             </Button>
           </div>
 

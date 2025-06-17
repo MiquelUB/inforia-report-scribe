@@ -46,8 +46,8 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
-          <div className="text-2xl font-bold text-inforia-light">
+        <div className="flex justify-between items-center h-16">
+          <div className="text-xl font-bold text-inforia-light">
             iNFORiA
           </div>
           
@@ -57,22 +57,12 @@ export const Header = () => {
               <button 
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="text-inforia-light hover:text-yellow-300 transition-colors"
+                className="text-inforia-light hover:text-yellow-300 transition-colors text-sm"
               >
                 {item.label}
               </button>
             ))}
           </nav>
-
-          {/* Botó CTA desktop */}
-          <div className="hidden md:block">
-            <Button 
-              onClick={() => scrollToSection('contact-form')}
-              className="bg-inforia-accent text-inforia-dark font-bold px-6 py-3 rounded-lg hover:bg-yellow-400 transition-all duration-300 animate-pulse-glow text-sm md:text-base"
-            >
-              🚀 DEMANA UNA DEMO GRATUÏTA
-            </Button>
-          </div>
 
           {/* Botó menú mòbil */}
           <button 
@@ -97,14 +87,6 @@ export const Header = () => {
                   {item.label}
                 </button>
               ))}
-              <div className="px-4 pt-4">
-                <Button 
-                  onClick={() => scrollToSection('contact-form')}
-                  className="w-full bg-inforia-accent text-inforia-dark font-bold py-3 rounded-lg hover:bg-yellow-400 transition-all duration-300 text-sm"
-                >
-                  🚀 DEMANA UNA DEMO GRATUÏTA
-                </Button>
-              </div>
             </nav>
           </div>
         )}
