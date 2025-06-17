@@ -45,14 +45,14 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-20">
+        <div className="grid grid-cols-3 items-center h-20">
           {/* Logo */}
           <div className="text-xl font-bold text-inforia-light">
             iNFORiA
           </div>
           
           {/* Navegació desktop - centrada */}
-          <nav className="hidden md:flex space-x-6">
+          <nav className="hidden md:flex justify-center space-x-6">
             {navigationItems.map((item) => (
               <button 
                 key={item.id}
@@ -65,13 +65,15 @@ export const Header = () => {
           </nav>
 
           {/* Botó menú mòbil */}
-          <button 
-            className="md:hidden text-inforia-light hover:text-yellow-300 transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Obrir menú"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="flex justify-end">
+            <button 
+              className="md:hidden text-inforia-light hover:text-yellow-300 transition-colors"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label="Obrir menú"
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Menú mòbil */}
