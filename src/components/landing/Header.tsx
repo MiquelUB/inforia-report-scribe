@@ -47,7 +47,7 @@ export const Header = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-3 items-center h-20">
           {/* Logo */}
-          <div className="text-xl font-bold text-inforia-light">
+          <div className="text-xl font-bold text-inforia-light text-left">
             iNFORiA
           </div>
           
