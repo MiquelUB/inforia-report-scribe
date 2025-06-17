@@ -45,16 +45,14 @@ export const Header = () => {
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-3 items-center h-20">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="text-xl font-bold text-inforia-light">
-            iNFORiA
-          </div>
-          
-          {/* Navegació desktop - centrada */}
-          <nav className="hidden md:flex justify-center space-x-6">
+          <div className="text-xl font-bold text-inforia-light">iNFORiA</div>
+
+          {/* Navegació desktop */}
+          <nav className="hidden md:flex space-x-6">
             {navigationItems.map((item) => (
-              <button 
+              <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
                 className="text-inforia-light hover:text-yellow-300 transition-colors text-sm"
@@ -64,16 +62,23 @@ export const Header = () => {
             ))}
           </nav>
 
+          {/* CTA desktop */}
+          <a
+            href="#contact-form"
+            onClick={() => scrollToSection('contact-form')}
+            className="hidden md:inline-block bg-inforia-accent text-inforia-dark py-2 px-4 rounded-md font-bold text-sm hover:bg-[#f4a623] transition"
+          >
+            🚀 DEMO GRATUÏTA
+          </a>
+
           {/* Botó menú mòbil */}
-          <div className="flex justify-end">
-            <button 
-              className="md:hidden text-inforia-light hover:text-yellow-300 transition-colors"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Obrir menú"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          <button
+            className="md:hidden text-inforia-light hover:text-yellow-300 transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Obrir menú"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
         {/* Menú mòbil */}
@@ -81,7 +86,7 @@ export const Header = () => {
           <div className="md:hidden bg-inforia-primary border-t border-inforia-secondary/20">
             <nav className="py-4 space-y-2">
               {navigationItems.map((item) => (
-                <button 
+                <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className="block w-full text-left px-4 py-2 text-inforia-light hover:text-yellow-300 hover:bg-inforia-secondary/20 transition-colors"
@@ -89,6 +94,13 @@ export const Header = () => {
                   {item.label}
                 </button>
               ))}
+              <a
+                href="#contact-form"
+                onClick={() => scrollToSection('contact-form')}
+                className="block text-center px-4 py-2 bg-inforia-accent text-inforia-dark rounded-md font-bold text-sm mx-4 mt-2"
+              >
+                🚀 DEMO GRATUÏTA
+              </a>
             </nav>
           </div>
         )}
