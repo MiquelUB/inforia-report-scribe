@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "outDir": ".test",
+    "noEmit": false,
+    "allowJs": true,
+    "allowImportingTsExtensions": false
+  },
+  "include": ["src/lib/utils.ts", "src/lib/utils.test.ts", "node.d.ts"]
+}
